@@ -1,6 +1,17 @@
 // Hamburger Menu Toggle
-document.querySelector('.hamburger').addEventListener('click', () => {
-    document.querySelector('.nav-menu').classList.toggle('active');
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Tutup menu saat tautan di nav-menu diklik
+const navLinks = document.querySelectorAll('.nav-menu a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
 });
 
 // Portfolio Scroll
