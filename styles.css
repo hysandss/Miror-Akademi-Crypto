@@ -1,13 +1,23 @@
+/* Impor font Poppins dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    background-color: #000000;
-    color: #fdf8f8;
+    background-color: #121212;
+    color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+/* Animasi Fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Navbar */
@@ -15,45 +25,52 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
-    background-color: #000;
+    padding: 15px 50px;
+    background-color: #0a0a0a;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-}
-
-.logo {
-    font-size: 100px;
-    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
 }
 
 .logo-img {
-    height: 100px; /* Tinggi logo */
+    height: 80px;
     width: auto;
-    display: block;
+    transition: transform 0.3s;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
 }
 
 .hamburger {
     display: none;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
+    color: #00d4ff;
 }
 
 .nav-menu {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     list-style: none;
 }
 
 .nav-menu a {
-    color: #a9b0f3;
+    color: #00d4ff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s, transform 0.2s;
 }
 
-.nav-menu a:hover {
-    color: #e1e1ec;
+.nav-menu a:hover,
+.nav-menu a:focus {
+    color: #ffd700;
+    transform: translateY(-2px);
 }
 
 /* Hamburger Menu untuk Mobile */
@@ -66,11 +83,13 @@ body {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 80px;
         right: 0;
-        background-color: #000;
-        width: 200px;
+        background-color: #0a0a0a;
+        width: 250px;
         padding: 20px;
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.3s ease-in;
     }
 
     .nav-menu.active {
@@ -78,7 +97,7 @@ body {
     }
 
     .logo-img {
-        height: 30px; /* Kurangi tinggi logo di mobile */
+        height: 50px;
     }
 }
 
@@ -90,15 +109,20 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('bg6.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('bg6.jpg');
     background-size: cover;
     background-position: center;
-    color: #7ad2ec;
+    background-attachment: fixed;
+    color: #f5f5f5;
+    animation: fadeIn 1s ease-out;
 }
 
 .hero h1 {
-    font-size: 40px;
+    font-size: 3rem;
+    font-weight: 700;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
 }
 
 .hero-buttons {
@@ -107,102 +131,124 @@ body {
 }
 
 .hero-buttons a {
-    padding: 12px 24px;
+    padding: 15px 30px;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hero-buttons a:hover,
+.hero-buttons a:focus {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
 }
 
 .join-class {
-    background-color: #04b6ec;
-    color: #ffffff;
+    background-color: #00d4ff;
+    color: #121212;
 }
 
 .whatsapp {
-    background-color: #00c3ff;
+    background-color: #25d366;
     color: #fff;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 /* Benefits Section */
 .benefits {
-    padding: 50px 20px;
+    padding: 80px 20px;
     text-align: center;
+    animation: fadeIn 1s ease-out;
 }
 
 .benefits h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: #00c3ff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #00d4ff;
+    letter-spacing: 1px;
 }
 
 .benefits-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
 .benefit-card {
-    background-color: #2a2a2a;
-    border-radius: 10px;
-    width: 300px;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    width: 320px;
     overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
 }
 
 .benefit-card img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
     display: block;
 }
 
 .card-content {
-    padding: 20px;
+    padding: 25px;
 }
 
 .card-content h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffd700;
 }
 
 .card-content p {
-    font-size: 16px;
-    color: #ccc;
+    font-size: 1rem;
+    color: #d5d5d5;
+    line-height: 1.6;
 }
 
 /* Portfolio Section */
 .portfolio {
-    padding: 50px 20px;
+    padding: 80px 20px;
     text-align: center;
+    animation: fadeIn 1s ease-out;
 }
 
 .portfolio h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: #00c3ff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #00d4ff;
 }
 
 .portfolio-container {
     position: relative;
-    max-width: 1600px; /* Container panjang seperti revisi sebelumnya */
+    max-width:900px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    background-color: #2a2a2a;
-    border-radius: 10px;
+    background-color: #0c0c0c;
+    border-radius: 15px;
     overflow: hidden;
+    padding: 20px;
 }
 
 .portfolio-items {
     display: flex;
     overflow-x: auto;
     scroll-behavior: smooth;
-    gap: 0;
+    gap: 20px;
     padding: 10px 0;
-    margin: 0;
     flex: 1;
 }
 
@@ -211,70 +257,81 @@ body {
 }
 
 .portfolio-item {
-    flex: 0 0 300px;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
+    flex: 0 0 280px;
+    background-color: #0c0c0c;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.03);
 }
 
 .portfolio-item img {
-    width: 90%;
-    height: auto;
-    max-height: 200px;
+    width: 100%;
+    height: 250px;
     object-fit: cover;
     display: block;
-    border-radius: 5px;
 }
 
 .scroll-icon {
-    font-size: 24px;
-    color: #0250e2;
+    font-size: 28px;
+    color: #00d4ff;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 12px;
     border-radius: 50%;
-    z-index: 10;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .scroll-icon:hover {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #00d4ff;
+    color: #121212;
+    transform: scale(1.1);
 }
 
 .scroll-icon.left {
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .scroll-icon.right {
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 /* Join Section */
 .join {
-    padding: 50px 20px;
+    padding: 80px 20px;
     text-align: center;
+    animation: fadeIn 1s ease-out;
 }
 
 .join h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
-    color: #00c3ff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: #00d4ff;
 }
 
 .join-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 50px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .join-card {
-    background-color: #2a2a2a;
-    border-radius: 10px;
+    background-color: #1e1e1e;
+    border-radius: 15px;
     overflow: hidden;
     width: 50%;
+    transition: transform 0.3s;
+}
+
+.join-card:hover {
+    transform: translateY(-10px);
 }
 
 .join-card img {
@@ -287,114 +344,152 @@ body {
 .join-description {
     width: 50%;
     text-align: left;
+    padding: 20px;
 }
 
 .join-description h3 {
-    font-size: 28px;
+    font-size: 1.8rem;
+    font-weight: 600;
     margin-bottom: 20px;
-    color: #00c3ff;
+    color: #ffd700;
 }
 
 .join-description p {
-    font-size: 16px;
-    color: #ffffff;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #d5d5d5;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
 .join-description .join-class {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 15px 30px;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: #00d4ff;
+    color: #121212;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.join-description .join-class:hover,
+.join-description .join-class:focus {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
 }
 
 /* Footer */
 .footer {
     text-align: center;
-    padding: 20px;
-    background-color: #000;
+    padding: 30px;
+    background-color: #0a0a0a;
+    border-top: 1px solid #00d4ff;
 }
 
 .footer i {
-    font-size: 24px;
+    font-size: 28px;
     color: #ffd700;
 }
 
-/* Social Media Icons */
 .social-icons {
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .social-icons a {
-    color: #d500f188;
-    font-size: 24px;
-    transition: color 0.3s;
+    color: #00d4ff;
+    font-size: 28px;
+    transition: color 0.3s, transform 0.3s;
 }
 
-.social-icons a:hover {
-    color: #fff;
+.social-icons a:hover,
+.social-icons a:focus {
+    color: #ffd700;
+    transform: scale(1.2);
 }
 
 /* Responsif untuk Mobile */
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background-color: #000;
-        width: 200px;
-        padding: 20px;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
     .hero h1 {
-        font-size: 36px;
+        font-size: 2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .hero-buttons a {
+        padding: 12px 20px;
+        font-size: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .benefits h2,
+    .portfolio h2,
+    .join h2 {
+        font-size: 2rem;
+    }
+
+    .benefit-card {
+        width: 100%;
+        max-width: 350px;
     }
 
     .portfolio-item {
-        flex: 0 0 200px;
+        flex: 0 0 220px;
     }
 
     .portfolio-item img {
-        max-height:250px;
+        height: 200px;
     }
 
     .scroll-icon {
-        font-size: 20px;
-        padding: 8px;
-    }
-
-    .portfolio-container {
-        max-width: 100%;
+        font-size: 24px;
+        padding: 10px;
     }
 
     .join-container {
         flex-direction: column;
+        gap: 30px;
     }
 
     .join-card,
     .join-description {
         width: 100%;
-    }
-
-    .join-card img {
-        max-height: 300px;
+        max-width: 350px;
     }
 
     .join-description {
         text-align: center;
+    }
+
+    .join-card img {
+        max-height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .portfolio-item {
+        flex: 0 0 180px;
     }
 }
