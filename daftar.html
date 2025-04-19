@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pembayaran QRIS untuk Akademi Crypto Premium">
+    <title>Pembayaran QRIS Miror Akademi Crypto</title>
+    <!-- Impor Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Impor font Poppins dari Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Animasi Fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            width: 100%;
+            margin: 20px auto;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #00d4ff;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #d5d5d5;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        img.qr-code {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+            border: 3px solid #00d4ff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+            transition: transform 0.3s;
+        }
+
+        img.qr-code:hover {
+            transform: scale(1.05);
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .download-btn, .whatsapp-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            transition: box-shadow 0.2s;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .download-btn {
+            background-color: #00d4ff;
+            color: #121212;
+        }
+
+        .whatsapp-btn {
+            background-color: #25d366;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Jarak antara ikon dan teks */
+        }
+
+        .download-btn:hover,
+        .whatsapp-btn:hover,
+        .download-btn:focus,
+        .whatsapp-btn:focus {
+            outline: none;
+        }
+
+        .download-btn:active,
+        .whatsapp-btn:active {
+            box-shadow: 0 0 15px 5px rgba(0, 212, 255, 0.7); /* Efek cahaya biru saat ditekan */
+        }
+
+        .benefits {
+            margin-top: 40px;
+        }
+
+        .benefits h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .benefits h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #00d4ff;
+            margin: 20px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefits ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .benefits li {
+            font-size: 1rem;
+            color: #d5d5d5;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .benefits li::before {
+            content: '\f058'; /* Ikon centang dari Font Awesome */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #00d4ff;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        .benefit-card {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .bonus h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffd700;
+            margin: 20px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            img.qr-code {
+                max-width: 250px;
+            }
+
+            .download-btn, .whatsapp-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+                max-width: 100%; /* Tombol memenuhi lebar di mobile */
+            }
+
+            .benefits h2 {
+                font-size: 1.6rem;
+            }
+
+            .benefits h3 {
+                font-size: 1.2rem;
+            }
+
+            .benefits li {
+                font-size: 0.9rem;
+            }
+
+            .button-container {
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            img.qr-code {
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pembayaran QRIS Miror Akademi Crypto</h1>
+        <p>Scan kode QRIS di bawah ini untuk melakukan pembayaran:</p>
+        <img src="qriss.jpeg" alt="Kode QRIS" class="qr-code">
+        <div class="button-container">
+            <a href="qriss.jpeg" download class="download-btn">Unduh Kode QRIS</a>
+            <a href="https://wa.me/6282173522098?text=Halo,%20saya%20telah%20melakukan%20pembayaran.%20Berikut%20bukti%20pembayarannya:" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Kirim Bukti Pembayaran</a>
+        </div>
+
+        <div class="benefits">
+            <h2>DISKON KELAS PREMIUM AKADEMI CRYPTO + SULLY + ICY + CUAN TERUS + SAG + FENGXIAN</h2>
+            
+            <div class="benefit-card">
+                <h3><i class="fas fa-graduation-cap"></i> Fasilitas Akademi Crypto</h3>
+                <ul>
+                    <li>Akses video modul premium AC</li>
+                    <li>Sinyal trading langsung dari AC</li>
+                    <li>Live calls Prof Kalimasada</li>
+                    <li>Rangkuman call AVS</li>
+                    <li>Video/rangkuman kuliah crypto by Kalimasada</li>
+                    <li>Riset eksklusif - Bocoran narasi koin 10x-100x</li>
+                    <li>Rekomendasi & outlook AC</li>
+                    <li>PDF research AC</li>
+                    <li>Rangkuman live privat</li>
+                    <li>Webinar AC (Akses Zoom & reply)</li>
+                </ul>
+            </div>
+
+            <div class="benefit-card">
+                <h3><i class="fas fa-fire"></i> Icy Traders</h3>
+                <ul>
+                    <li>Outlook Icy</li>
+                    <li>Modul Icy</li>
+                    <li>Challenge Icy (Spot)</li>
+                    <li>Potensial Call</li>
+                </ul>
+            </div>
+
+            <div class="benefit-card">
+                <h3><i class="fas fa-rocket"></i> Sully</h3>
+                <ul>
+                    <li>Modul Sully (Lengkap)</li>
+                    <li>Daily update</li>
+                    <li>Pojok Sully</li>
+                    <li>Pojok Mira</li>
+                    <li>Live reply</li>
+                    <li>Quant View</li>
+                    <li>Akses Webinar</li>
+                </ul>
+            </div>
+
+            <div class="benefit-card">
+                <h3><i class="fas fa-hat-wizard"></i> Kevin Saily (SAG)</h3>
+                <ul>
+                    <li>Study Time Series</li>
+                    <li>Live SAG Collections</li>
+                    <li>FX Market Update</li>
+                    <li>Daily to Weekly Outlook & Spot</li>
+                    <li>Market Update</li>
+                    <li>Scalping Aggressive</li>
+                    <li>BTC, ETH, BNB, ADA, XRP Update</li>
+                    <li>Fundamental and News</li>
+                    <li>Altcoins</li>
+                </ul>
+            </div>
+
+            <div class="benefit-card">
+                <h3><i class="fas fa-dragon"></i> FengXian Crypto</h3>
+                <ul>
+                    <li>Spot Signal</li>
+                    <li>Program $100-$10000 (Future)</li>
+                    <li>Dex-Scanner Call</li>
+                    <li>Lifetime Akses (Include Setahun)</li>
+                </ul>
+            </div>
+
+            <div class="benefit-card">
+                <h3><i class="fas fa-sun"></i> Cuan Terus</h3>
+                <ul>
+                    <li>Reply Crypto</li>
+                    <li>Research CuanTerus</li>
+                    <li>Crypto Market</li>
+                    <li>Update Outlook</li>
+                    <li>Altcoin Update</li>
+                    <li>Bitcoin Update</li>
+                    <li>Market Insight</li>
+                    <li>Index</li>
+                </ul>
+            </div>
+
+            <div class="bonus">
+                <h3><i class="fas fa-gift"></i> BONUS</h3>
+                <ul>
+                    <li>Modul Ternak Uang</li>
+                    <li>Record Webinar</li>
+                    <li>Noice Timothy</li>
+                    <li>E-Book Crypto</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
