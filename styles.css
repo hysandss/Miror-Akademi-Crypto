@@ -426,6 +426,7 @@ body {
     }
 
     .hero-buttons a {
+        display: table-column;
         padding: 12px 20px;
         font-size: 1rem;
         width: 100%;
